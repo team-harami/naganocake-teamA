@@ -17,7 +17,7 @@ class Admin::ItemsController < ApplicationController
         @item.genre_id = 1 
         @item.save
         # 後でパス先を商品詳細に変更する
-        redirect_to new_admin_item_path
+        redirect_to admin_item_path(@item.id)
     end
     
     def show
@@ -25,11 +25,13 @@ class Admin::ItemsController < ApplicationController
     end
     
     def edit
-        
+        @item = Item.find(params[:id])
     end
     
     def update
-        
+        @item=Item.find(params[:id])
+        @item.update(item_params)
+        redirect_to admin_item_path(@item.id)
     end
     
     private
