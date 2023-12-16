@@ -1,0 +1,39 @@
+@use '~bootstrap/scss/bootstrap';
+
+.background {
+  width: 700px;
+  height: 467px;
+  position: relative;
+  background: url(../../assets/images/cake.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.box {
+  width: 380px;
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255,255,255,0.5);
+}
+
+.box-text {
+  // width: 190px;
+  // height: 90px;
+  position: absolute;
+  // top: 50%;
+  // left: 50%;
+  // text-align: center;
+  // padding-top: 25px;
+  transform: translate(3%, 0%);
+  font-weight: normal;
+  font-size: 16px;
+}
+
+.height {
+  margin: 3px;
+  margin-top: 5px;
+  padding: 0px;
+}

@@ -4,15 +4,14 @@
 
 <p>
     ジャンル名
-    <%= form_with model:@genre, url: admin_genre_path, method: :patch do |f| %>
+    <%= form_with model: @genre, url: admin_genres_path do |f| %>
         <%= f.text_field :name %>
         <%= f.submit "新規登録" %>
     <% end %>
 </p>
 
 <h5>ジャンル</h5>
-
-<%= @genre.each do |genre| %>
+<% @genres.each do |genre| %>
     <div>
         <p>
             <%= genre.name %>
