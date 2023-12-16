@@ -11,9 +11,10 @@
 
 <!--ジャンルのフォームはまだ非搭載-->
 <h5>ジャンル</h5>
+<%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択してください" %>
 
 <h5>税抜き価格</h5>
-<%= f.number_field :price %>円
+<%= f.number_field :price, min: 1 %>円
 
 <h5>販売ステータス</h5>
 <%= f.radio_button :is_active, :true %>
