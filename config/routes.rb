@@ -2,12 +2,25 @@ Rails.application.routes.draw do
 
   devise_for :users
   
+  root to: 'public/homes#top'
+  get 'about' => 'public/homes#about'
+  
   scope module: :public do
     resources :orders, only: [:new, :confirm, :thanks, :create, :index, :show]
   end
   namespace :admin do
     resources :orders, only: [:show, :update]
   end
+
+
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
+  
+  resources :items, only: [:index, :show]
+  
+  namespace :admin do
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+  end
+  
 end
