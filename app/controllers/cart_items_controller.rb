@@ -11,8 +11,16 @@ class CartItemsController < ApplicationController
     @cart_item.customer_id = 1
     # まだ会員のモデルと紐づけていないためコメントアウト
     # @cart_item.customer_id = current_customer.id
-    @cart_item.save
-    redirect_to cart_items_path
+    
+    if cart_item = CartItem.find_by(customer_id: @cart_item.customer_id, item_id: @cart_item.item_id)
+      # ３０個を超えた場合数量が反映されない
+      new_amount = cart_item.amount + @cart_item.amount
+      cart_item.update_attribute(:amount, new_amount)
+      redirect_to cart_items_path
+    else
+      @cart_item.save
+      redirect_to cart_items_path
+    end
   end
   
   def update
@@ -24,7 +32,8 @@ class CartItemsController < ApplicationController
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
-    redirect_to request.referer  end
+    redirect_to request.referer  
+  end
   
   def destroy_all
     # cart_items = CartItem.where(customer_id: current_customer.id)
@@ -33,10 +42,11 @@ class CartItemsController < ApplicationController
     redirect_to request.referer
   end
   
-  private
-  
-  def cart_item_params
-    params.require(:cart_item).permit(:customer_id, :item_id, :amount)
-  end
-  
+private
+
+    def cart_item_params
+        params.require(:cart_item).permit(:customer_id, :item_id, :amount)
+    end
+
+
 end
