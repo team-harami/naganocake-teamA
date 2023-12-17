@@ -6,21 +6,22 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @customer = Customer.find(params[:customer_id])
-    if current_user == @customer
-      
-  end
-
-  def thanks
+    # @customer = Customer.find(params[:customer_id])
   end
 
   def create
-    @order = Order.new
-    @order.save
-    redirect_to 
+    order = Order.new
+    order.user_id = current_user.id
+    order.save
+    redirect_to thanks_orders_path
+  end
+  
+  def thanks
   end
 
   def index
+    # @customer = Customer.find(params[:customer_id])
+    # @orders = Order.where(customer_id: @customer.id)
   end
 
   def show

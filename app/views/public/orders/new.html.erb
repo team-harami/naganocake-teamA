@@ -11,7 +11,7 @@
   
 <!--<strong>お届け先</strong>-->
 <%#= form_with model: @order do |f| %>
-  <%#= f.radio_button :address, customer_id.address %>
+  <%#= f.radio_button :address, @customer.address %>
   <%#= f.label :address, 'ご自身の住所' %><br>
   <%#= @customer.postal_code %> <%#= @customer.address %><br>
   <%#= @customer.last_name %><%#= @customer.first_name %>
@@ -32,4 +32,4 @@
   
 
 
-<%#= link_to '確認画面へ進む', 確認画面URL, class:"btn btn-primary" %>
+<%#= link_to '確認画面へ進む', confirm_orders_path, method: :post, class:"btn btn-primary" %>
