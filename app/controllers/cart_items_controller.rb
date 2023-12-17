@@ -2,14 +2,15 @@ class CartItemsController < ApplicationController
   
   
   def index
-    @cart_items = CartItem.all
+    # @cart_items =  CartItem.where(customer_id: current_customer.id)
+    @cart_items =  CartItem.where(customer_id: 1)
   end
   
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = 1
     # まだ会員のモデルと紐づけていないためコメントアウト
-    # @cart_item.customer_id = current_user.id
+    # @cart_item.customer_id = current_customer.id
     @cart_item.save
     redirect_to cart_items_path
   end
@@ -17,17 +18,19 @@ class CartItemsController < ApplicationController
   def update
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(cart_item_params)
-    redirect_to cart_items_path
+    redirect_to request.referer  
   end
   
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
-    redirect_to cart_items_path
-  end
+    redirect_to request.referer  end
   
   def destroy_all
-    
+    # cart_items = CartItem.where(customer_id: current_customer.id)
+    cart_items = CartItem.where(customer_id: 1) 
+    cart_items.destroy_all
+    redirect_to request.referer
   end
   
   private
