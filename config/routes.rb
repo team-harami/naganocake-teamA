@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   get 'about' => 'public/homes#about'
   
   scope module: :public do
-    resources :orders, only: [:new, :confirm, :thanks, :create, :index, :show]
+    resources :orders do #only: [:new, :thanks, :create, :index, :show]
+      collection do
+        get 'confirm'
+      end
+    end
   end
   namespace :admin do
     resources :orders, only: [:show, :update]
