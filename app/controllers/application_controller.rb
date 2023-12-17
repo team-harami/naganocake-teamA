@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
       :sign_up,keys: [
       :last_name,
       :first_name,
-      :last_nama_kana,
+      :last_name_kana,
       :first_name_kana,
       :email,
       :postal_code,
