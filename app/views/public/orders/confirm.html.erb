@@ -19,10 +19,10 @@
           <th>小計</th>
         </tr>
         <tr>
-          <td>会員が買った商品<%#= customer_id.cart_items.item_id %></td>
-          <td>商品値段<%#= order_detail.tax_price(customer_id) %></td>
-          <td>数<%#= customer_id.cart_items.amount %></td>
-          <td>小計金額<%#= order_detail.tax_price(customer_id) %></td>
+          <td>会員が買った商品<%#= @customer.cart_items.item_id %></td>
+          <td>商品値段<%#= order_detail.tax_price(@customer) %></td>
+          <td>数<%#= @customer.cart_items.amount %></td>
+          <td>小計金額<%#= order_detail.tax_price(@customer) %></td>
         </tr>
       </table>
     <!--</td>-->
