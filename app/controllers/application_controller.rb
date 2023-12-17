@@ -16,4 +16,5 @@ class ApplicationController < ActionController::Base
       :telephone_number,
       :is_active])
   end
+
 end
