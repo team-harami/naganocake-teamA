@@ -46,7 +46,8 @@
   <!--</tr>-->
 <!--</table>-->
 <strong>支払方法</strong>　<%#= 選択した支払方法 %><br>
-<strong>お届け先</strong>
+<strong>お届け先</strong><br>
 
 
-<%#= link_to '注文を確定する', URL, class:"btn btn=success btn-lg" %>
+<%= link_to '注文を確定する', thanks_orders_path, class:"btn btn-success btn-lg" %>
+<!--メソッドPOSTか？-->
