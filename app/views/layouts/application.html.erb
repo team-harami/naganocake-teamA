@@ -12,19 +12,19 @@
 
   <body>
     <header>
-      <% if user_signed_in? %>
+      <% if customer_signed_in? %>
         <p>ようこそ<%#= current_user.last_name %>さん！</p>
         <%#= link_to 'マイページ', #'customers/my_page' #後でmypage_pathへ変更%>
         <%#= link_to '商品一覧', #'items' #後でpathに変更%>
         <%#= link_to 'カート', #'cart_items' #後で変更%>
-        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-        
+        <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %>
+
       <% else %>
         <%= link_to 'About', about_path %>
         <%#= link_to '商品一覧', #'items' %>
-        <%= link_to '新規登録', new_user_registration_path %>
-        <%= link_to 'ログイン', new_user_session_path, class:"btn btn-success" %>
-        
+        <%= link_to '新規登録', new_customer_registration_path %>
+        <%= link_to 'ログイン', new_customer_session_path %>
+
       <% end %>
     </header>
     <%= yield %>

@@ -1,10 +1,16 @@
  <%= link_to "商品を追加", new_admin_item_path %> 
 
 <% @items.each do |item| %>
-    <p>商品id：<%= item.id %></p>
+    <p>商品ID：<%= item.id %></p>
     <p>商品名：<%=link_to " #{item.name}", admin_item_path(item.id) %></p>
     <p>税抜き価格：<%= item.price %></p>
-    <p>ジャンル：<%= item.genre_id %></p>
-    <p>ステータス：<%= item.genre_id %></p>
+    <p>ジャンル：<%= item.genre.name %></p>
+    <p>ステータス：
+    <% if item.is_active %>
+        販売中
+    <% else %>
+       販売停止中
+    <% end %>
+    </p>
   </div>
 <% end %>
