@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'about' => 'homes#about'
 
+
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -11,6 +12,16 @@ Rails.application.routes.draw do
  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
+
+ resource :customers do
+    collection do
+      get :my_page, to: "customers#show"
+      get "information/edit", to: "customers#edit"
+      patch :information, to: "customers#update"
+      get :unsubscribe
+      patch :withdraw
+    end
+  end
 
   get 'items/index'
   get 'items/show'
