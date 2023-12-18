@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
 
+ scope module: :public do
  resource :customers do
     collection do
       get :my_page, to: "customers#show"
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
       patch :withdraw
     end
   end
+end
 
   get 'items/index'
   get 'items/show'
