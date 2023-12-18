@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+  
   def new
     @order = Order.new
     # @customer = Customer.find(params[:customer_id])
@@ -10,7 +11,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    order = Order.new
+    order = Order.new(order_params)
     order.user_id = current_user.id
     order.save
     redirect_to thanks_orders_path
@@ -27,5 +28,12 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @details = OrderDetail.find(params[:id])
+  end
+  
+  
+  private
+  
+  def order_params
+    params.require(:order).permit(:postal_code, :address, :name, :shipping_cost, :total_payment, :payment_method, :status)
   end
 end
