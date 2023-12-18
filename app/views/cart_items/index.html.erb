@@ -1,7 +1,12 @@
-
-<h4>ショッピングカート</h4>
-
-<%= button_to "カートを空にする", destroy_cart_path, method: :delete, class: "btn btn-danger", data: { confirm: "本当に空にしますか？" } %>
+<div class="container">
+    <div class="d-flex justify-content-end" >
+        <div class ="mg-aut col-2">
+           <h4 class="col-md-4 text-center headline">ショッピングカート</h4>
+        </div>  
+        <div class="col-2">
+            <%= button_to "カートを空にする", destroy_cart_path, method: :delete, class: "btn btn-danger", data: { confirm: "本当に空にしますか？" } %>
+        </div>
+    </div>
 
 <table>
 <thead>
@@ -44,3 +49,5 @@
 </table>
 
     <%= link_to "買い物を続ける", root_path, class: "btn", style: "background-color: #008000; color: #FFFFFF;" %>
+    
+</div>

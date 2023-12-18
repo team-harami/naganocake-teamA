@@ -16,8 +16,7 @@ class CartItemsController < ApplicationController
     
     elsif cart_item = CartItem.find_by(customer_id: @cart_item.customer_id, item_id: @cart_item.item_id)
       # ３０個を超えた場合数量が反映されない
-      new_amount = cart_item.amount + @cart_item.amount
-      new_amount = amount_check(new_amount)
+      new_amount = amount_check(cart_item.amount + @cart_item.amount)
       cart_item.update_attribute(:amount, new_amount)
       redirect_to cart_items_path
     else
