@@ -1,4 +1,4 @@
-    <p><%= image_tag @item.item_image %></p>
+    <p><%= image_tag @item.get_item_image(500,500) %></p>
     <h4>商品名：<%= @item.name %></h4>
     <p>商品説明：<%= @item.introduction %></p>
     <p>
@@ -8,11 +8,12 @@
         (税込)
     </p>
     
-    
-    <!--カートに入れる機能を後で追加form_with-->
-    <%= form_with model: @cart_item, url:cart_items_path do |f|%>
-        <%= f.hidden_field :customer_id, value: current_customer.id %>
-        <%= f.hidden_field :item_id, value: @item.id %>
-        <%= f.select :amount, *[1..30], include_blank: "個数選択" %>
-        <%= f.submit "カートに入れる" %>
+    <% if customer_signed_in? %>
+        <!--カートに入れる機能を後で追加form_with-->
+        <%= form_with model: @cart_item, url:cart_items_path do |f|%>
+         <%= f.hidden_field :customer_id, value: current_customer.id %>
+            <%= f.hidden_field :item_id, value: @item.id %>
+            <%= f.select :amount, *[1..30], include_blank: "個数選択" %>
+            <%= f.submit "カートに入れる" %>
+        <% end %>
     <% end %>

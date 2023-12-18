@@ -17,7 +17,7 @@
         <%#= link_to 'マイページ', #'customers/my_page' #後でmypage_pathへ変更%>
         <%= link_to '商品一覧', items_path%>
         <%= link_to 'カート', cart_items_path %>
-        <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %>
+        <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class:"btn" %>
 
       <% else %>
         <%= link_to 'About', about_path %>
