@@ -8,8 +8,6 @@
 <h5>商品説明</h5>
 <%= f.text_area :introduction %>
 
-
-<!--ジャンルのフォームはまだ非搭載-->
 <h5>ジャンル</h5>
 <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択してください" %>
 

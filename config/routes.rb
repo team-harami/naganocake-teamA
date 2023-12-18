@@ -1,25 +1,23 @@
 Rails.application.routes.draw do
 
-  
   root to: 'public/homes#top'
   get 'about' => 'public/homes#about'
-  
+
+  devise_for :customers,skip: [:passwords], controllers: {
+  registrations: "public/registrations",
+  sessions: 'public/sessions'
+}
+
+ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  sessions: "admin/sessions"
+}
+
   scope module: :public do
-    resources :orders do #only: [:new, :thanks, :create, :index, :show]
-      collection do
-        get 'confirm'
-        get 'thanks'
-      end
-    end
-  end
-  namespace :admin do
-    resources :orders, only: [:show, :update]
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_cart'
+    resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :update, :destroy, :create]
   end
 
-
-  
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :items, only: [:index, :show]
 
   namespace :admin do
     resources :genres, only:[:index, :create, :edit, :update]
