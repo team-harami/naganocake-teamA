@@ -2,7 +2,7 @@ class Public::OrdersController < ApplicationController
   
   def new
     @order = Order.new
-    # @customer = Customer.find(params[:customer_id])
+    # @customer = Customer.find(params[:id])
     # @address = Address.where(customer_id: params[:customer_id])
   end
 
@@ -21,8 +21,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    # @customer = Customer.find(params[:customer_id])
-    # @orders = Order.where(customer_id: @customer.id)
+    @customer = Customer.find(params[:customer_id])
+    @orders = Order.where(customer_id: @customer.id)
   end
 
   def show
@@ -34,6 +34,7 @@ class Public::OrdersController < ApplicationController
   private
   
   def order_params
-    params.require(:order).permit(:postal_code, :address, :name, :shipping_cost, :total_payment, :payment_method, :status)
+    params.require(:order).permit(:postal_code, :address, :name, :payment_method)
   end
+
 end
