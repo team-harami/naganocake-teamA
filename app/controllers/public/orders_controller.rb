@@ -7,7 +7,10 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    # @customer = Customer.find(params[:customer_id])
+    @customer = current_customer
+    # order = Order.find(params[:id])
+    # @pay = order.payment_method
+    #newページで登録した情報を反映させたい 
   end
 
   def create
