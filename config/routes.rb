@@ -26,12 +26,12 @@ Rails.application.routes.draw do
     end
   end
     resources :customers do
-    collection do
-      get :my_page, to: "customers#show"
-      get "information/edit", to: "customers#edit"
-      patch :information, to: "customers#update"
-      get :unsubscribe
-      patch :withdraw
+      collection do
+        get :my_page, to: "customers#show"
+        get "information/edit", to: "customers#edit"
+        patch :information, to: "customers#update"
+        get :unsubscribe
+        patch :withdraw
       end
     end
   end
