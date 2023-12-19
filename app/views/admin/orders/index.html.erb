@@ -3,18 +3,23 @@
 <table>
   <thead border>
     <tr bgcolor="#DDDDDD">
-      <th>購入日時</th><th>購入者</th><th>注文個数</th>
+      <th>購入日時</th>
+      <th>購入者</th>
+      <th>注文個数</th>
     </tr>
   </thead>
   <tbody>
   <% @orders.each do |order| %>
     <tr>
-      <%= link_to admin_order_path(@customer.id) do %>
+      <%= link_to admin_order_path(@customer) do %>
         <%= order.created_at %>
         <!--購入者の買った日時＝注文確定日時間分秒-->
       <% end %>
     </tr>
-    <tr><%= order.name %></tr>
-    <tr><%= .amount %></tr>
+    <tr><%= @customer.last_name %><%= @customer.first_name %></tr>
+    <tr><%= order_detail.amount %></tr>
+    <!--order_detailsから数を引っ張ってくる。-->
   </tbody>
 </table>
+
+<%= paginate orders %>
