@@ -15,7 +15,7 @@ class Public::OrdersController < ApplicationController
     order.save
     redirect_to thanks_orders_path
   end
-  
+
   def thanks
   end
 
