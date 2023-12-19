@@ -10,9 +10,16 @@ class Admin::OrdersController < ApplicationController
     # @customer_id = @customer.id
     # @order = Order.customer_id
     # ↑分からん
-    @order = Order.find(params[:order_])
+    @order = Order.find(params[:id])
   end
 
   def update
+    order = Order.find(params[:id])
+    status = order.status
+    status.update
+    redirect_to admin_order_path
+    # 多分非同期
   end
+  
+  # ストロングパロメーターは必要か？
 end
