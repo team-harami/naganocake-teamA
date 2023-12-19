@@ -10,6 +10,7 @@ class Admin::OrdersController < ApplicationController
     # @customer_id = @customer.id
     # @order = Order.customer_id
     # ↑分からん
+    @order = Order.find(params[:order_])
   end
 
   def update

@@ -3,7 +3,7 @@
 <table>
   <tbody>
     <tr>
-      <strong><th>購入者</th></strong>
+      <th>購入者</th>
       <td>
         <%#= link_to 購入者の会員詳細ページ？ do %>
         <%= @customer.last_name %><%= @customer.first_name %>
@@ -11,22 +11,67 @@
       </td>
     </tr>
     <tr>
-      <strong><th>注文日</th></strong>
-      <td><%= order.customer_id.created_at %></td>
+      <th>注文日</th>
+      <td><%= @order.created_at %></td>
 <!--改善！orderテーブルカラムのcustomer_id(=購入者)の注文日を表示したい-->
     </tr>
     <tr>
-      <strong><th>配送先</th></strong>
+      <th>配送先</th>
       <td><%= order.postal_code %><%= order.address %></td><br>
       <td><%= order.name %></td>
     </tr>
     <tr>
-      <strong><th>支払方法</th></strong>
+      <th>支払方法</th>
       <td><%= order.payment_method %></td>
     </tr>
     <tr>
-      <strong><th>注文ステータス</th></strong>
-      <td><%= </td>
+      <th>注文ステータス</th><
+      <td>
+        <%= form_with model: @order, method: :patch, url: admin_order_path do |f| %>
+          <%= f.select :status, options_for_select([0, 1, 2, 3, 4]) %>
+          <%= f.submit '更新', class:"btn btn-success btn-sm" %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr bgcolor="#DDDDDD">
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>製作ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @order_show.each do |s| %> 
+    <tr>
+      <td><%= s.item_id %></td>
+      <td><%= s.tax_price %></td>
+      <td><%= s.amount %></td>
+      <td><%= 単価(税込)x数量 %></td>
+      <td><%= s.select :making_status, options_for_select([0, 1, 2, 3]) %></td>
+      <td><%= s.submit '更新', class:"btn btn-success btn-sm" %></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <th>商品合計</th>
+      <td><%= 小計全部足す %></td>
+    </tr>
+    <tr>
+      <th>送料</th>
+      <td>800円</td>
+    </tr>
+    <tr>
+      <th>請求金額合計</th>
+      <td><%= 金額 %></td>
     </tr>
   </tbody>
 </table>
