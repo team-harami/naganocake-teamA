@@ -10,7 +10,7 @@ class Public::OrdersController < ApplicationController
     @customer = current_customer
     # order = Order.find(params[:id])
     # @pay = order.payment_method
-    #newページで登録した情報を反映させたい 
+    #newページで登録した情報を反映させたい
   end
 
   def create
