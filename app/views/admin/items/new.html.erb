@@ -10,7 +10,6 @@
 <%= f.text_area :introduction %>
 
 
-<!--ジャンルのフォームはまだ非搭載-->
 <h5>ジャンル</h5>
 <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択してください" %>
 <h5>税抜き価格</h5>

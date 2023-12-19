@@ -1,0 +1,18 @@
+    <p><%= image_tag @item.item_image %></p>
+    <h4>商品名：<%= @item.name %></h4>
+    <p>商品説明：<%= @item.introduction %></p>
+    <p>
+        <!--税込計算-->
+        <% tax_price=@item.price*1.1 %> 
+        ￥<%= tax_price.floor.to_s(:delimited)  %>
+        (税込)
+    </p>
+    
+    
+    <!--カートに入れる機能を後で追加form_with-->
+    <%= form_with model: @cart_item, url:cart_items_path do |f|%>
+        <%= f.hidden_field :customer_id, value: current_customer.id %>
+        <%= f.hidden_field :item_id, value: @item.id %>
+        <%= f.select :amount, *[1..30], include_blank: "個数選択" %>
+        <%= f.submit "カートに入れる" %>
+    <% end %>
