@@ -1,0 +1,9 @@
+ja:
+  enums:
+    order:
+      payment_method:
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"
+#これで文字列だったcredit_cardとtransferが日本語化された
+#どのモデルの、どのカラムに、enumの設定を行い
+#キーに対応する日本語がどれか記述することで、日本語で呼び出せる
