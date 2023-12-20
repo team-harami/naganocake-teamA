@@ -46,7 +46,7 @@
   <!--</tr>-->
 <!--</table>-->
 <strong>支払方法</strong>　<%#= @order.payment_method %><br>
-<strong>お届け先</strong><br>
+<strong>お届け先</strong><%= @address.set_address %>
 
 
 <%= link_to '注文を確定する', orders_path, method: :post, class:"btn btn-success btn-lg" %>

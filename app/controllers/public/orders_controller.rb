@@ -11,6 +11,7 @@ class Public::OrdersController < ApplicationController
     # order = Order.find(params[:id])
     # @pay = order.payment_method
     #newページで登録した情報を反映させたい
+    @address = Address.find(params[:order][:address_id])
   end
 
   def create
