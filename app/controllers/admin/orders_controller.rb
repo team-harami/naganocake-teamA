@@ -20,6 +20,6 @@ class Admin::OrdersController < ApplicationController
     redirect_to admin_order_path
     # 多分非同期
   end
-  
+
   # ストロングパロメーターは必要か？
 end
