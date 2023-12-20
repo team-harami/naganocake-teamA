@@ -1,6 +1,6 @@
 <h3>配送先登録 / 一覧</h3>
 
-<%= form_with model: @address, method: :post do |f| %>
+<%= form_with model: @address, method: :post, url: addresses_path do |f| %>
   <%= f.label :postal_code, '郵便番号(ハイフンなし)' %>
   <%= f.text_field :postal_code, placeholder:"0000000" %><br>
   <%= f.label :address, '住所' %>
@@ -19,7 +19,6 @@
 <%# end %>
 
 <table border="3">
-<%# @addresses.each do |a| %>
   <thead>
     <tr>
       <th>郵便番号</th>
@@ -28,16 +27,17 @@
       <th></th>
     </tr>
   </thead>
-<!--  <tbody>-->
-  <%# @addresses.each do |a| %>
-<!--    <tr>-->
-      <td><%#= a.postal_code %></td>
-      <td><%#= a.address %></td>
-      <td><%#= a.name %></td>
-<!--      <td>-->
-        <%#= a.submit '編集する', class:"btn btn-success" %>
-        <%#= a.submit '削除する', class:"btn btn-danger" %>
-<!--      </td>-->
-<!--    </tr>-->
-<!--  </tbody>-->
-<!--</table>-->
+  <tbody>
+  <% @addresses.each do |address| %>
+    <tr>
+      <td><%= address.postal_code %></td>
+      <td><%= address.address %></td>
+      <td><%= address.name %></td>
+      <td>
+        <%= link_to '編集する', edit_address_path(address), class:"btn btn-success" %>
+        <%= link_to '削除する', address_path(address), method: :delete, class:"btn btn-danger" %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

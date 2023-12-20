@@ -1,15 +1,22 @@
 class Public::AddressesController < ApplicationController
 
+  # def new
+  #   address = Address.new
+  # end
+  
   def create
     address = Address.new(address_params)
+    address.customer_id = current_customer.id
     address.save
-    render :index
+    redirect_to addresses_path
   end
 
   def index
     @address = Address.new
     # @customer = Customer.find(params[:customer_id])
-    # @addresses = Address.where(customer_id: @customer)
+    # @address.customer_id = current_customer.id
+    # @customer = current_customer.id
+    @addresses = Address.where(customer_id: current_customer.id)
   end
 
   def edit
