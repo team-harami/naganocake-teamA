@@ -20,13 +20,13 @@
             <tr>
                 <td><%= item.id %></td>
                 <td><%=link_to " #{item.name}", admin_item_path(item.id) %></td>
-                <td><%= item.price %></td>
+                <td><%= item.price.to_s(:delimited) %></td>
                 <td><%= item.genre.name %></td>
                 <td>
                     <% if item.is_active %>
-                        販売中
+                      <b class = "text-success fw-bold">販売中</b> 
                     <% else %>
-                       販売停止中
+                      <b class = "text-black-50 fw-bold">販売停止中</b>
                     <% end %>
                 </td>
             </tr>

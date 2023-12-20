@@ -5,15 +5,15 @@
 <%= f.file_field :item_image, accept: "image/*" %>
 
 <h5>商品名</h5>
-<%= f.text_field :name %>
+<%= f.text_field :name ,placeholder: "商品名"%>
 <h5>商品説明</h5>
-<%= f.text_area :introduction %>
+<%= f.text_area :introduction ,placeholder: "商品説明"%>
 
 
 <h5>ジャンル</h5>
 <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択してください" %>
 <h5>税抜き価格</h5>
-<%= f.number_field :price, min: 1 %>円
+<%= f.number_field :price, min: 1 ,placeholder: "税抜き価格"%>円
 
 <h5>販売ステータス</h5>
 <%= f.radio_button :is_active, :true %>
