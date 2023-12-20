@@ -1,4 +1,7 @@
-<h2>新規会員登録</h2>
+<div class="container">
+  <div class="row">
+     <div class="col-md-10 mx-auto">
+<h5>新規会員登録</h5>
 
 <%= form_with model: resource, url: registration_path(resource_name), local: true do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
@@ -6,15 +9,11 @@
 <table>
   <tbody>
   <tr>
-   <th><%= f.label :last_name, "名前" %></th>
-    <td>
-      <%= f.label :last_name, "(姓)" %>
-      <%= f.text_field :last_name %>
-    </td>
-    <td>
-    <%= f.label :first_name, "(名)" %>
-    <%= f.text_field :first_name %>
-    </td>
+    <td class="p-1"><%= f.label :last_name, "名前" %></td>
+    <td class="p-1"><%= f.label :last_name, "(姓)" %></td>
+    <td class="p-1"><%= f.text_field :last_name %></td>
+    <td class="p-1"><%= f.label :first_name, "(名)" %></td>
+    <td class="p-1"><%= f.text_field :first_name %></td>
   </tr>
 
   <tr>
@@ -69,7 +68,10 @@
  </table>
 <% end %>
 
-<h3>既に登録済みの方</h3>
+<h5>既に登録済みの方</h5>
 <p>
 <%= render "public/shared/links" %>からログインしてください。
 </p>
+</div>
+</div>
+</div>
