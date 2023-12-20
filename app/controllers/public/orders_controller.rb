@@ -9,9 +9,12 @@ class Public::OrdersController < ApplicationController
   def confirm
     @customer = current_customer
     # order = Order.find(params[:id])
-    # @pay = order.payment_method
+    @pay = params[:order][:payment_method]
     #newページで登録した情報を反映させたい
     @address = Address.find(params[:order][:address_id])
+    @option = params[:order][:address_option]
+    @order = Address.new
+    # @order = params[:order][:address_option][2]
   end
 
   def create
@@ -30,7 +33,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order = Order.find(params[:order_id])
     @details = OrderDetail.find(params[:id])
   end
 

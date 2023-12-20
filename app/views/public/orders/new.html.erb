@@ -11,7 +11,7 @@
 <strong>お届け先</strong><br>
   <%= f.radio_button :address_option, 0 %>
   <%= f.label :address, 'ご自身の住所' %><br>
-  <%= @customer.postal_code %> <%= @customer.address %><br>
+  〒<%= @customer.postal_code %> <%= @customer.address %><br>
   <%= @customer.last_name %><%= @customer.first_name %><br>
 
   <%= f.radio_button :address_option, 1 %>
