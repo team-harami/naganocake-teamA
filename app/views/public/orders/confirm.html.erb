@@ -18,11 +18,12 @@
           <th>数量</th>
           <th>小計</th>
         </tr>
+        <%# @cart_item.each do |cart| %>
         <tr>
-          <td>会員が買った商品<%#= @customer.cart_items.item_id %></td>
-          <td>商品値段<%#= order_detail.tax_price(@customer) %></td>
-          <td>数<%#= @customer.cart_items.amount %></td>
-          <td>小計金額<%#= order_detail.tax_price(@customer) %></td>
+          <td>会員が買った商品名<%#= cart.item_id %></td>
+          <td>単価(税込)<%#= cart.カート内の小計引っ張る %></td>
+          <td>数量<%#= cart.amount(item_id) %></td>
+          <td>小計<%#= order_detail.tax_price(@customer) %></td>
         </tr>
       </table>
     <!--</td>-->
@@ -45,7 +46,7 @@
     <!--</td>-->
   <!--</tr>-->
 <!--</table>-->
-<strong>支払方法</strong>　<%= @pay %><br>
+<strong>支払方法</strong><%= @pay %><br>
 <strong>お届け先</strong>
 <% if @option == 0 %>
   〒<%= @customer.postal_code %><%= @customer.address %><br>
@@ -59,4 +60,3 @@
 
 
 <%= link_to '注文を確定する', orders_path, method: :post, class:"btn btn-success btn-lg" %>
-<!--メソッドPOSTか？-->

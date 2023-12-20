@@ -15,6 +15,7 @@ class Public::OrdersController < ApplicationController
     @option = params[:order][:address_option]
     @order = Address.new
     # @order = params[:order][:address_option][2]
+    # @cart_item = CartItem.find(params[:cart_item.id])
   end
 
   def create

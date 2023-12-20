@@ -7,6 +7,8 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:customer_id])
+    @order_show = @customer.cart_item(updated_at)
+    # ↑改正する余地あり
     # @customer_id = @customer.id
     # @order = Order.customer_id
     # ↑分からん

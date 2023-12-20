@@ -17,12 +17,12 @@
     </tr>
     <tr>
       <th>配送先</th>
-      <td><%= order.postal_code %><%= order.address %></td><br>
-      <td><%= order.name %></td>
+      <td><%= @order.postal_code %><%= @order.address %></td><br>
+      <td><%= @order.name %></td>
     </tr>
     <tr>
       <th>支払方法</th>
-      <td><%= order.payment_method %></td>
+      <td><%= @order.payment_method %></td>
     </tr>
     <tr>
       <th>注文ステータス</th><
@@ -52,10 +52,11 @@
       <td><%= s.item_id %></td>
       <td><%= s.tax_price %></td>
       <td><%= s.amount %></td>
-      <td><%= 単価(税込)x数量 %></td>
+      <td><%= s.tax_price*amount %></td>
       <td><%= s.select :making_status, options_for_select([0, 1, 2, 3]) %></td>
-      <td><%= s.submit '更新', class:"btn btn-success btn-sm" %></td>
+      <td><%= link_to '更新', method: :patch, admin_order_path, class:"btn btn-success btn-sm" %></td>
     </tr>
+  <% end %>
   </tbody>
 </table>
 
