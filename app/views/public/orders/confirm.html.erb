@@ -20,9 +20,9 @@
         </tr>
         <%# @cart_item.each do |cart| %>
         <tr>
-          <td>会員が買った商品名<%#= cart.item_id %></td>
-          <td>単価(税込)<%#= cart.カート内の小計引っ張る %></td>
-          <td>数量<%#= cart.amount(item_id) %></td>
+          <td><%#= cart.item_id %></td>
+          <td>単価(税込)<%#= cart.item_id.price*1.1 %></td>
+          <td><%#= cart.amount(item_id) %></td>
           <td>小計<%#= order_detail.tax_price(@customer) %></td>
         </tr>
       </table>
@@ -46,12 +46,19 @@
     <!--</td>-->
   <!--</tr>-->
 <!--</table>-->
-<strong>支払方法</strong><%= @pay %><br>
+<strong>支払方法</strong>
+<% if @pay == 'credit_card' %>
+  <%= 'クレジットカード' %>
+<% else %>
+  <%= '銀行振込' %>
+<% end %>
+<%#= @order.payment_methods_i18n[:payment_method] %><br>
 <strong>お届け先</strong>
-<% if @option == 0 %>
+<% if @select_address == '0' %>
+<%#= @select_address %>
   〒<%= @customer.postal_code %><%= @customer.address %><br>
   <%= @customer.last_name %><%= @customer.first_name %>
-<% elsif @option == 1 %>
+<% elsif @select_address == '1'%>
   <%= @address.set_address %>
 <% else %>
   〒<%= @order.postal_code %><%= @order.address %><br>

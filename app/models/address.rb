@@ -8,8 +8,9 @@ class Address < ApplicationRecord
 # 住所に関係あるset_addressというオリジナルメソッドを定義。
 # '文字列'+カラム名+''←半角の空間も文字列扱いでこの記述
 
-  # def c_address
+  # def confilm_address
   #   '〒'+postal_code+' '+address
+  #   name
   # end
 
 end
