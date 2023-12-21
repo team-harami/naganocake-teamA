@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root to: 'public/homes#top'
   get 'about' => 'public/homes#about'
-
+  get 'public/genres/:id/search/' => 'public/searches#search_genre'
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -15,7 +15,9 @@ Rails.application.routes.draw do
 
   scope module: :public do
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_cart'
-    resources :items, only: [:index, :show]
+    resources :items, only: [:index, :show] do
+      
+    end
     resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :orders do #only: [:new, :thanks, :create, :index, :show]
       collection do

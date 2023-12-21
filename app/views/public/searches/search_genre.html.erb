@@ -5,9 +5,9 @@
             <%= render '/public/items/search_genre.html.erb' %>
         </div>
     </div>
-    <div class= "col-7 lm-1">
+    <div class= "col-7 lm-2">
         <div class ="row">
-            <h4>商品一覧</h4>
+            <h4><%= @genre.name %>一覧</h4>
             （全<%=@items.count%>件）　
         </div>
         <div class="row">
