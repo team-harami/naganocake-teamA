@@ -20,7 +20,8 @@ class Public::OrdersController < ApplicationController
     # @option = @order.address_option
     # @order = Address.new
     # @order = params[:order][:address_option][2]
-    @cart_item = CartItem.find(params[:cart_item_id])
+    @cart_item = CartItem.where(customer_id: current_customer.id)
+    @total_price = 0
     # @item_id = cart_item.item_id
   end
 

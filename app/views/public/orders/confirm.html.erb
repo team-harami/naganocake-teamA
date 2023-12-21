@@ -20,10 +20,10 @@
         </tr>
         <% @cart_item.each do |cart| %>
         <tr>
-          <td><%= cart.item_id %></td>
-          <td><%= cart.item_id.price*1.1.floor %></td>
+          <td><%= cart.item.name %></td>
+          <td><%= cart.item.with_tax_price %></td>
           <td><%= cart.amount %></td>
-          <td><%= cart.item_id.price*1.1.floor*cart.amount %></td>
+          <td><%= cart.subtotal.to_s(:delimited) %></td>
         </tr>
         <% end %>
       </table>
@@ -35,14 +35,16 @@
           <th bgcolor="#DDDDDD">送料</th>
           <td>800</td>
         </tr>
+        <% @cart_item.each do |cart| %>
         <tr>
           <th bgcolor="#DDDDDD">商品合計</th>
-          <td>商品値段<%#= tax_price+tax_price %></td>
+          <td><%= @total_price += cart.subtotal %></td>
         </tr>
         <tr>
           <th bgcolor="#DDDDDD">請求金額</th>
-          <td>金額<%#= tax_price+tax_price+shipping_cost %></td>
+          <td>金額<%= @total_price += cart.subtotal + 800 %></td>
         </tr>
+        <% end %>
       </table>
     <!--</td>-->
   <!--</tr>-->
