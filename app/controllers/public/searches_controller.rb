@@ -4,4 +4,10 @@ class Public::SearchesController < ApplicationController
         @genre = Genre.find(params[:id])
         @items = Item.where(genre_id: @genre.id, is_active: true)
     end
+    
+    def search_name
+        @word = params[:word]
+        @items = Item.where( "name LIKE?", "%#{@word}%")
+        # @items = Item.where(is_active: true)
+    end
 end

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   get 'about' => 'public/homes#about'
   get 'public/genres/:id/search/' => 'public/searches#search_genre'
+  get 'public/seachr' =>'public/searches#search_name', as: 'search_items'
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
