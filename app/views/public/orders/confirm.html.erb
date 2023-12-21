@@ -18,12 +18,12 @@
           <th>数量</th>
           <th>小計</th>
         </tr>
-        <%# @cart_item.each do |cart| %>
+        <% @cart_item.each do |cart| %>
         <tr>
-          <td><%#= cart.item_id %></td>
-          <td>単価(税込)<%#= cart.item_id.price*1.1 %></td>
-          <td><%#= cart.amount(item_id) %></td>
-          <td>小計<%#= order_detail.tax_price(@customer) %></td>
+          <td><%= cart.item_id %></td>
+          <td><%= cart.item_id.price*1.1.floor %></td>
+          <td><%= cart.amount(item_id) %></td>
+          <td>小計<%= cart.item_id.price*1.1.floor %></td>
         </tr>
       </table>
     <!--</td>-->
