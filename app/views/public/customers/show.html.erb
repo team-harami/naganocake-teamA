@@ -5,9 +5,11 @@
 
 <div class="d-flex align-items-end my-3">
 <h6><strong>登録情報</strong></h6>
+<div class="ml-4">
 <%= link_to information_edit_customers_path, class: "btn btn-success" do %>
  編集する
 <% end %>
+</div>
 </div>
 
 <table class="table table-bordered">
@@ -39,20 +41,33 @@
   </tbody>
 </table>
 
-<div class="d-flex align-items-end mt-3">
+<table>
+  <tbody>
+    <tr>
+<td class="d-flex align-items-end mt-3">
 <h6><strong>配送先</strong></h6>
+</td>
+<td class="pl-4">
 <%= link_to root_path, class: "btn btn-primary" do %>
  一覧を見る
 <% end %>
-</div>
+</td>
+</tr>
 <!--パスは仮-->
 
-<div class="d-flex align-items-end mt-3">
+</tr>
+<td class="d-flex align-items-end mt-3">
 <h6><strong>注文履歴</strong></h6>
+</td>
+
+<td class="pl-4">
 <%= link_to root_path, class: "btn btn-primary" do %>
  一覧を見る
 <% end %>
-</div>
+</td>
+</tr>
+</tbody>
+</table>
 <!--パスは仮-->
 </div>
 </div>
