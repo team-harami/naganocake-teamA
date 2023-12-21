@@ -1,28 +1,38 @@
-
-<h4>商品一覧</h4>
-（全<%=@items.count%>件）　
-
-<div class="card-deck py-5 text-center">
-    <% @items.each do |item| %>
-        <div class = "card border-0">
-            <div class="card-image-top w-50 mx-auto ">
-                <%= link_to item_path(item.id) do %>
-                    <%= image_tag item.get_item_image(150,150), class: "card-img-top"; %>
+<div class="container">
+    <div class ="col-4">
+        <!--ジャンル検索-->
+        <div></div>
+    </div>
+    <div class= "col-7 lm-1">
+        <div class ="row">
+            <h4>商品一覧</h4>
+            （全<%=@items.count%>件）　
+        </div>
+        <div class="row">
+            <div class="card-deck py-5 text-center">
+                <% @items.each do |item| %>
+                    <div class = "card border-0">
+                        <div class="card-image-top w-50 mx-auto ">
+                            <%= link_to item_path(item.id) do %>
+                                <%= image_tag item.get_item_image(150,150), class: "card-img-top"; %>
+                            <% end %>
+                        </div>
+                        <div class="card-body">
+                                <div class ="card-title">
+                                    <%= item.name %>
+                                </div>
+                                <div class ="card-text">
+                                    <% tax_price=item.price*1.1 %> 
+                                    <%= tax_price.floor.to_s(:delimited)  %>円
+                                </div>
+                        </div>
+                    </div>
                 <% end %>
-            </div>
-            <div class="card-body">
-                    <div class ="card-title">
-                        <%= item.name %>
-                    </div>
-                    <div class ="card-text">
-                        <% tax_price=item.price*1.1 %> 
-                        <%= tax_price.floor.to_s(:delimited)  %>円
-                    </div>
+                <!--ページネーション-->
+                <%#= paginate post_images %>
             </div>
         </div>
-    <% end %>
-    <!--ページネーション-->
-    <%#= paginate post_images %>
+    </div>
 </div>
     
     
