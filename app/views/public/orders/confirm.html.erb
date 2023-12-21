@@ -22,9 +22,10 @@
         <tr>
           <td><%= cart.item_id %></td>
           <td><%= cart.item_id.price*1.1.floor %></td>
-          <td><%= cart.amount(item_id) %></td>
-          <td>小計<%= cart.item_id.price*1.1.floor %></td>
+          <td><%= cart.amount %></td>
+          <td><%= cart.item_id.price*1.1.floor*cart.amount %></td>
         </tr>
+        <% end %>
       </table>
     <!--</td>-->
 

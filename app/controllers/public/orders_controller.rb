@@ -9,20 +9,19 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     @address = Address.find(params[:order][:address_id])
-    # @order.postal_code = @address.postal_code
-    # @order.address = @address.address
-    # @order.name = @address.name
     @customer = current_customer
     @select_address = params[:order][:address_option]
     # order = Order.find(params[:id])
     @pay = params[:order][:payment_method]
     #newページで登録した情報を反映させたい
-
-
+    # @order.postal_code = @address.postal_code
+    # @order.address = @address.address
+    # @order.name = @address.name
     # @option = @order.address_option
     # @order = Address.new
     # @order = params[:order][:address_option][2]
-    # @cart_item = CartItem.find(params[:cart_item.id])
+    @cart_item = CartItem.find(params[:cart_item_id])
+    # @item_id = cart_item.item_id
   end
 
   def create
