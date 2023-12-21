@@ -11,18 +11,15 @@ class Public::OrdersController < ApplicationController
     @address = Address.find(params[:order][:address_id])
     @customer = current_customer
     @select_address = params[:order][:address_option]
-    # order = Order.find(params[:id])
     @pay = params[:order][:payment_method]
-    #newページで登録した情報を反映させたい
-    # @order.postal_code = @address.postal_code
-    # @order.address = @address.address
-    # @order.name = @address.name
-    # @option = @order.address_option
-    # @order = Address.new
-    # @order = params[:order][:address_option][2]
+    
     @cart_item = CartItem.where(customer_id: current_customer.id)
     @total_price = 0
-    # @item_id = cart_item.item_id
+    @cart_item.each do |item|
+      @total_price += item.subtotal
+    end
+    @order.shipping_cost = '800'
+    @order.total_payment = @total_price + 800
   end
 
   def create
@@ -49,7 +46,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:postal_code, :address, :name, :payment_method)
+    params.require(:order).permit(:postal_code, :address, :name, :payment_method, :shipping_cost, :total_payment, :customer_id)
   end
 
 end
