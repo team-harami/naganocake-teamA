@@ -17,7 +17,7 @@ class Public::OrdersController < ApplicationController
     # order = Order.find(params[:id])
     @pay = params[:order][:payment_method]
     #newページで登録した情報を反映させたい
-    
+
 
     # @option = @order.address_option
     # @order = Address.new
