@@ -1,13 +1,17 @@
-<h1>マイページ</h1>
+<div class="container">
+  <div class="row">
+     <div class="col-md mx-auto">
+<h5>マイページ</h5>
 
-<h2>登録情報</h2>
-
+<div class="d-flex align-items-end my-3">
+<h6><strong>登録情報</strong></h6>
 <%= link_to information_edit_customers_path, class: "btn btn-success" do %>
  編集する
 <% end %>
+</div>
 
-<table>
-  <tbody>
+<table class="table table-bordered">
+  <tbody class="thead-light">
     <tr>
       <th>氏名</th>
       <td><%= "#{@customer.last_name} #{@customer.first_name}" %></td>
@@ -35,16 +39,22 @@
   </tbody>
 </table>
 
-<h2>配送先</h2>
+<div class="d-flex align-items-end mt-3">
+<h6><strong>配送先</strong></h6>
 <%= link_to root_path, class: "btn btn-primary" do %>
  一覧を見る
 <% end %>
+</div>
 <!--パスは仮-->
 
-<h2>注文履歴</h2>
+<div class="d-flex align-items-end mt-3">
+<h6><strong>注文履歴</strong></h6>
 <%= link_to root_path, class: "btn btn-primary" do %>
  一覧を見る
 <% end %>
+</div>
 <!--パスは仮-->
-
+</div>
+</div>
+</div>
 
