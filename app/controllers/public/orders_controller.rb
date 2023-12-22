@@ -18,14 +18,29 @@ class Public::OrdersController < ApplicationController
     @cart_item.each do |item|
       @total_price += item.subtotal
     end
-    @order.shipping_cost = '800'
+    # @order.shipping_cost = '800'
     @order.total_payment = @total_price + 800
+    @order_new = Order.new
+    render :confirm
   end
 
   def create
     order = Order.new(order_params)
-    order.user_id = current_user.id
+    # order.user_id = current_user.id
     order.save
+    @cart_items = current_customer.cart_items.all
+    
+    @cart_items.each do |cart_item|
+      @order_details = OrderDetail.new
+      @order_details.order_id = order.id
+      @order_details.item_id = cart_item.item.id
+      @order_details.tax_price = cart_item.item.with_tax_price
+      @order_details.amount = cart_item.amount
+      @order_details.making_status = 0
+      @order_details.save!
+    end
+    
+    CartItem.destroy_all
     redirect_to thanks_orders_path
   end
 
@@ -46,7 +61,14 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:postal_code, :address, :name, :payment_method, :shipping_cost, :total_payment, :customer_id)
+    params.require(:order).permit(:postal_code, :address, :name, :payment_method, :shipping_cost, :total_payment, :customer_id, :status)
+  end
+  
+  def cartitem_nill
+    cart_items = current_customer.cart_items
+    if cart_items.blank?
+      redirect_to cart_items_path
+    end
   end
 
 end
