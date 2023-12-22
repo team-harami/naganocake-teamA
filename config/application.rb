@@ -13,7 +13,7 @@ module Naganocake
     config.i18n.default_locale = :ja
     #Rails アプリケーションのデフォルトの言語が日本語となった
     #翻訳語として使いたい言語を指定する
-    
+    config.time_zone = 'Asia/Tokyo'
 
     # Configuration for the application, engines, and railties goes here.
     #

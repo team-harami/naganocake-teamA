@@ -1,34 +1,34 @@
 <h3>注文履歴詳細</h3>
-
 <table>
   <tbody>
     <tr>
       <th>購入者</th>
       <td>
         <%#= link_to 購入者の会員詳細ページ？ do %>
-        <%= @customer.last_name %><%= @customer.first_name %>
+        <%= @order.customer.last_name %><%= @order.customer.first_name %>
         <%# end %>
       </td>
     </tr>
     <tr>
       <th>注文日</th>
-      <td><%= @order.created_at %></td>
+      <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
 <!--改善！orderテーブルカラムのcustomer_id(=購入者)の注文日を表示したい-->
     </tr>
     <tr>
       <th>配送先</th>
       <td><%= @order.postal_code %><%= @order.address %></td><br>
-      <td><%= @order.name %></td>
     </tr>
     <tr>
       <th>支払方法</th>
-      <td><%= @order.payment_method %></td>
+      <td><%= @order.payment_method_i18n %></td>
     </tr>
     <tr>
       <th>注文ステータス</th><
       <td>
-        <%= form_with model: @order, method: :patch, url: admin_order_path do |f| %>
-          <%= f.select :status, options_for_select([0, 1, 2, 3, 4]) %>
+        <%= form_with model: @order, method: :patch, url: admin_order_path(@order) do |f| %>
+          <%#= f.select :status, options_for_select([0, 1, 2, 3, 4]) %>
+          <%= f.select :status, options_for_select(Order.statuses.keys,@order.status)%>
+          <%#= f.select :status, Order.satatuss_i18n.keys.map{|k| [I18n.t("enum.order.status.#{k}"),k] %>
           <%= f.submit '更新', class:"btn btn-success btn-sm" %>
         <% end %>
       </td>
@@ -47,14 +47,20 @@
     </tr>
   </thead>
   <tbody>
-  <% @order_show.each do |s| %> 
+  <% @order_details.each do |order_detail| %> 
     <tr>
-      <td><%= s.item_id %></td>
-      <td><%= s.tax_price %></td>
-      <td><%= s.amount %></td>
-      <td><%= s.tax_price*amount %></td>
-      <td><%= s.select :making_status, options_for_select([0, 1, 2, 3]) %></td>
-      <td><%= link_to '更新', method: :patch, admin_order_path, class:"btn btn-success btn-sm" %></td>
+      <td><%= order_detail.item.name %></td>
+      <td><%= order_detail.tax_price %></td>
+      <td><%= order_detail.amount %></td>
+      <td><%= order_detail.tax_price*order_detail.amount %></td>
+      <td>
+        <%= form_with model: order_detail ,method: :patch, url: admin_order_detail_path(order_detail) do |f| %>
+        <%= f.select :making_status, options_for_select(OrderDetail.making_statuses.keys, order_detail.making_status) %>
+      </td>
+      <td>
+        <%= f.submit '更新',class:"btn btn-success btn-sm" %>
+        <% end %>
+      </td>
     </tr>
   <% end %>
   </tbody>
@@ -64,15 +70,15 @@
   <tbody>
     <tr>
       <th>商品合計</th>
-      <td><%= 小計全部足す %></td>
+      <td><%= @order.total_payment - @order.shipping_cost %></td>
     </tr>
     <tr>
       <th>送料</th>
-      <td>800円</td>
+      <td><%= @order.shipping_cost%></td>
     </tr>
     <tr>
       <th>請求金額合計</th>
-      <td><%= 金額 %></td>
+      <td><%=@order.total_payment %></td>
     </tr>
   </tbody>
 </table>
