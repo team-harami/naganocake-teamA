@@ -1,22 +1,35 @@
-<h2>ログイン</h2>
-<h2>会員の方はこちらからログイン</h2>
+<div class="container">
+  <div class="row">
+     <div class="col-md mx-auto">
+<h5>ログイン</h5>
+<h6>会員の方はこちらからログイン</h6>
 <%= form_with model: resource, url: session_path(resource_name), local: true do |f| %>
-  <div class="field">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :パスワード %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+  <table>
+    <tbody>
+      <tr>
+    <td><%= f.label :メールアドレス %></td>
+    <td class="pl-2"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+  </tr>
 
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
+  <tr>
+    <td><%= f.label :パスワード %></td>
+    <td class="pl-2"><%= f.password_field :password, autocomplete: "current-password" %></td>
+ </tr>
+
+  <tr>
+    <td></td>
+    <td class="pl-2"><%= f.submit "ログイン", class: "btn btn-primary" %></td>
+  </tr>
+  </tbody>
+  </table>
 <% end %>
 
-<h3>会員登録がお済みでない方</h3>
-<p>
-<%= render "public/shared/links" %>から新規登録を行なってください。
+<h6>会員登録がお済みでない方</h6>
+<p class="d-flex align-items-end">
+<span class="mr-2"><%= render "public/shared/links" %></span>から新規登録を行なってください。
 </p>
+</div>
+</div>
+</div>
+
