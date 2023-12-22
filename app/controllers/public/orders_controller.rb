@@ -45,8 +45,8 @@ class Public::OrdersController < ApplicationController
       @order_details.making_status = '製作不可'
       @order_details.save
     end
-
-    CartItem.destroy_all
+    cart_items = CartItem.where(customer_id: current_customer.id)
+    cart_items.destroy_all
     redirect_to thanks_orders_path
   end
 
