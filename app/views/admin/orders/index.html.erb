@@ -19,15 +19,15 @@
     </td>
     <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
     <td> 
-      <% order.oder_detail.each do |order_detail_amount| %>
-      <% @order_amount += order_detail_amount %>
+      <% order.order_details.each do |order_detail| %>
+      <% @order_amount += order_detail.amount %>
       <% end %>
       <%= @order_amount %>
     <!--order_detailsから数を引っ張ってくる。-->
     </td>
     <td>
-      <%= Order.statuss_i18n[Order.satatus.key(@order.status)]%>
-      <%= @order.statuss_i18n%>
+      <%#= Order.statuss_i18n[Order.satatus.key(@order.status)]%>
+      <%= order.status%>
     </td>
   </tbody>
   <% end %>

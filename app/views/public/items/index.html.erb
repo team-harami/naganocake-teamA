@@ -22,8 +22,7 @@
                                     <%= item.name %>
                                 </div>
                                 <div class ="card-text">
-                                    <% tax_price=item.price*1.1 %> 
-                                    <%= tax_price.floor.to_s(:delimited)  %>円
+                                    <%= item.with_tax_price.floor.to_s(:delimited) %>円
                                 </div>
                         </div>
                     </div>

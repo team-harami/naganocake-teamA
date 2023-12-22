@@ -14,13 +14,13 @@ class Admin::OrdersController < ApplicationController
     # @order = Order.customer_id
     # ↑分からん
     @order = Order.find(params[:id])
-    @order_details = OrderDetail.where(order_id @order.id)
+    @order_details = OrderDetail.where(order_id: @order.id)
   end
 
   def update
-    order = Order.find(params[:id])
+    @order = Order.find(params[:id])
     # status = order.status
-    order.update(order_params)
+    @order.update(order_params)
     redirect_to request.referer 
     # 多分非同期
   end
