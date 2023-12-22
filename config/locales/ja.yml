@@ -5,7 +5,7 @@ ja:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
       status:
-        waite_payment: "入金待ち"
+        waiting_payment: "入金待ち"
         confirm_paymente: "入金確認"
         under_making: "製作中"
         preparing_ship: "発送準備中"
@@ -13,7 +13,7 @@ ja:
     oder_detail:
       making_status:
         impossible_making: "制作不可"
-        waite_making: "制作待ち"
+        waiting_making: "制作待ち"
         under_making: "製作中"
         complete_making: "制作完了"
 #これで文字列だったcredit_cardとtransferが日本語化された
