@@ -1,38 +1,65 @@
-<div class="container d-flex-column space-around text-center">
-  <div class="row my-4" >
-    <h4 class="col-md-4">注文情報確認</h4>
+<div class="container p-3">
+  <div class="row">
+    <div class="col-md-7">
+      <h4>注文情報確認</h4>
+      
+      <div class="teble-responsive">
+      <table class = "table table-bordered b">
+        <tr class="table-secondary">
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+        </tr>
+        <% @cart_item.each do |cart| %>
+        <tr>
+          <td>
+            <%= image_tag cart.item.get_item_image(100, 80) %>
+            <%= cart.item.name %>
+          </td>
+          <td><%= cart.item.with_tax_price.to_s(:delimited) %></td>
+          <td><%= cart.amount %></td>
+          <td><%= cart.subtotal.to_s(:delimited) %></td>
+        </tr>
+        <% end %>
+      </table>
+
+
+<!--<div class="container d-flex-column space-around text-center">-->
+  <!--<div class="row my-4" >-->
     
-  <div class="teble-responsive">
-  <table class = "table table-bordered b">
-    <tr class="table-secondary">
-      <th>商品名</th>
-      <th>単価(税込)</th>
-      <th>数量</th>
-      <th>小計</th>
-    </tr>
+    
+  <!--<div class="teble-responsive">-->
+  <!--<table class = "table table-bordered b">-->
+    <!--<tr class="table-secondary">-->
+    <!--  <th>商品名</th>-->
+    <!--  <th>単価(税込)</th>-->
+    <!--  <th>数量</th>-->
+    <!--  <th>小計</th>-->
+    <!--</tr>-->
       
 
-<table border>
-  <tr bgcolor="#DDDDDD">
-    <th>商品名</th>
-    <th>単価(税込)</th>
-    <th>数量</th>
-    <th>小計</th>
-  </tr>
-  <% @cart_item.each do |cart| %>
-  <tr>
-    <td>
-      <%= image_tag cart.item.get_item_image(100, 80) %>
-      <%= cart.item.name %>
-    </td>
-    <td><%= cart.item.with_tax_price.to_s(:delimited) %></td>
-    <td><%= cart.amount %></td>
-    <td><%= cart.subtotal.to_s(:delimited) %></td>
-  </tr>
-  <% end %>
-</table>
-
-<table border>
+<!--<table border>-->
+<!--  <tr bgcolor="#DDDDDD">-->
+<!--    <th>商品名</th>-->
+<!--    <th>単価(税込)</th>-->
+<!--    <th>数量</th>-->
+<!--    <th>小計</th>-->
+<!--  </tr>-->
+<!--  <%# @cart_item.each do |cart| %>-->
+<!--  <tr>-->
+<!--    <td>-->
+<!--      <%#= image_tag cart.item.get_item_image(100, 80) %>-->
+<!--      <%#= cart.item.name %>-->
+<!--    </td>-->
+<!--    <td><%#= cart.item.with_tax_price.to_s(:delimited) %></td>-->
+<!--    <td><%#= cart.amount %></td>-->
+<!--    <td><%#= cart.subtotal.to_s(:delimited) %></td>-->
+<!--  </tr>-->
+<!--  <%# end %>-->
+<!--</table>-->
+<div class="col-md-5">
+<table "table table-bordered b">
   <tr>
     <th bgcolor="#DDDDDD">送料</th>
     <td>800</td>
@@ -46,6 +73,7 @@
     <td><%= number_with_delimiter(@total_price + 800) %></td>
   </tr>
 </table>
+</div>
 
 <strong>支払方法</strong>
 <%= @order.payment_method_i18n %><br>
