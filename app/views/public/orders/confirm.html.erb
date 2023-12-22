@@ -1,53 +1,54 @@
 <h3>注文情報確認</h3>
 
-<!--<table>-->
-<!--  <thead>-->
-<!--    <tr>-->
+<table border>
+  <tr bgcolor="#DDDDDD">
+    <th>商品名</th>
+    <th>単価(税込)</th>
+    <th>数量</th>
+    <th>小計</th>
+  </tr>
+  <% @cart_item.each do |cart| %>
+  <tr>
+    <td><%= cart.item.name %></td>
+    <td><%= cart.item.with_tax_price.to_s(:delimited) %></td>
+    <td><%= cart.amount %></td>
+    <td><%= cart.subtotal.to_s(:delimited) %></td>
+  </tr>
+  <% end %>
+</table>
+ 
+<table border>
+  <tr>
+    <th bgcolor="#DDDDDD">送料</th>
+    <td><%= @order.shipping_cost %></td>
+  </tr>
+  <tr>
+    <th bgcolor="#DDDDDD">商品合計</th>
+    <td><%= number_with_delimiter(@total_price) %></td>
+  </tr>
+  <tr>
+    <th bgcolor="#DDDDDD">請求金額</th>
+    <td><%= number_with_delimiter(@total_price + 800) %></td>
+  </tr>
+</table>
+ 
+<strong>支払方法</strong>
+<% if @pay == 'credit_card' %>
+  <%= 'クレジットカード' %>
+<% else %>
+  <%= '銀行振込' %>
+<% end %><br>
 
-<!--    </tr>-->
-<!--  </thead>-->
-<!--</table>-->
-
-<!--<table>-->
-  <!--<tr>-->
-    <!--<td>-->
-      <table border>
-        <tr bgcolor="#DDDDDD">
-          <th>商品名</th>
-          <th>単価(税込)</th>
-          <th>数量</th>
-          <th>小計</th>
-        </tr>
-        <tr>
-          <td>会員が買った商品<%#= @customer.cart_items.item_id %></td>
-          <td>商品値段<%#= order_detail.tax_price(@customer) %></td>
-          <td>数<%#= @customer.cart_items.amount %></td>
-          <td>小計金額<%#= order_detail.tax_price(@customer) %></td>
-        </tr>
-      </table>
-    <!--</td>-->
-
-    <!--<td>-->
-      <table border>
-        <tr>
-          <th bgcolor="#DDDDDD">送料</th>
-          <td>800</td>
-        </tr>
-        <tr>
-          <th bgcolor="#DDDDDD">商品合計</th>
-          <td>商品値段<%#= tax_price+tax_price %></td>
-        </tr>
-        <tr>
-          <th bgcolor="#DDDDDD">請求金額</th>
-          <td>金額<%#= tax_price+tax_price+shipping_cost %></td>
-        </tr>
-      </table>
-    <!--</td>-->
-  <!--</tr>-->
-<!--</table>-->
-<strong>支払方法</strong>　<%#= 選択した支払方法 %><br>
-<strong>お届け先</strong><br>
+<strong>お届け先</strong>
+<% if @select_address == '0' %>
+  〒<%= @customer.postal_code %><%= @customer.address %><br>
+  <%= @customer.last_name %><%= @customer.first_name %>
+<% elsif @select_address == '1'%>
+  <%= @address.set_address %>
+<% else %>
+  〒<%= @order.postal_code %><%= @order.address %><br>
+  <%= @order.name %>
+<% end %><br>
 
 
 <%= link_to '注文を確定する', orders_path, method: :post, class:"btn btn-success btn-lg" %>
-<!--メソッドPOSTか？-->
