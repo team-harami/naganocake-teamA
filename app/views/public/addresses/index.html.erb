@@ -1,13 +1,46 @@
-<h3>配送先登録 / 一覧</h3>
+<div class="form-row">
+  <div class="form-group col-1"></div>
+<h4 class="form-group col-3">
+  配送先登録 / 一覧
+  </h4>
+</div>
 
 <%= form_with model: @address, method: :post, url: addresses_path do |f| %>
-  <%= f.label :postal_code, '郵便番号(ハイフンなし)' %>
-  <%= f.text_field :postal_code, placeholder:"0000000" %><br>
-  <%= f.label :address, '住所' %>
-  <%= f.text_field :address, size: 60, placeholder:"東京都渋谷区代々木神園町0-0" %><br>
-  <%= f.label :name, '宛名' %>
+ <div class="form-row">
+  <div class="form-group col-2">
+  <span class="pl-5"><%= f.label :postal_code, '郵便番号(ハイフンなし)' %></span>
+  </div>
+  <div class="form-group col-10">
+  <%= f.text_field :postal_code, placeholder:"0000000" %>
+  </div>
+   </div>
+
+  <div class="form-row">
+    <div class="form-group col-2">
+  <span class="pl-5"><%= f.label :address, '住所' %></span>
+  </div>
+  <div class="form-group col-10">
+  <%= f.text_field :address, size: 60, placeholder:"東京都渋谷区代々木神園町0-0" %>
+  </div>
+  </div>
+
+
+  <div class="form-row">
+    <div class="form-group col-2">
+  <span class="pl-5"><%= f.label :name, '宛名' %></span>
+  </div>
+  <div class="form-group col-10">
   <%= f.text_field :name, placeholder:"令和道子" %>
+  </div>
+   </div>
+
+
+   <div class="form-row">
+      <div class="form-group col-2"></div>
+      <div class="form-group col-10">
   <%= f.submit '新規登録', class:"btn btn-success btn-sm" %>
+  </div>
+  </div>
 <% end %>
 
 <%# @addresses.each do |a| %>
