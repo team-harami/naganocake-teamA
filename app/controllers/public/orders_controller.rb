@@ -27,7 +27,6 @@ class Public::OrdersController < ApplicationController
     @cart_item.each do |item|
       @total_price += item.subtotal
     end
-    
     @order.total_payment = @total_price + 800
     @order_new = Order.new
   end
