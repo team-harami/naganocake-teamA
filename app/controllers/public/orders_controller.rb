@@ -8,7 +8,8 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-    @address = Address.find(params[:order][:address_id])
+    # 配達先を登録していなければエラー
+    # @address = Address.find(params[:order][:address_id])
     @customer = current_customer
     @select_address = params[:order][:address_option]
     @pay = params[:order][:payment_method]
