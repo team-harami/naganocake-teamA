@@ -9,18 +9,21 @@
   </tr>
   <% @cart_item.each do |cart| %>
   <tr>
-    <td><%= cart.item.name %></td>
+    <td>
+      <%= image_tag cart.item.get_item_image(100, 80) %>
+      <%= cart.item.name %>
+    </td>
     <td><%= cart.item.with_tax_price.to_s(:delimited) %></td>
     <td><%= cart.amount %></td>
     <td><%= cart.subtotal.to_s(:delimited) %></td>
   </tr>
   <% end %>
 </table>
- 
+
 <table border>
   <tr>
     <th bgcolor="#DDDDDD">送料</th>
-    <td><%= @order.shipping_cost %></td>
+    <td>800</td>
   </tr>
   <tr>
     <th bgcolor="#DDDDDD">商品合計</th>
@@ -31,24 +34,41 @@
     <td><%= number_with_delimiter(@total_price + 800) %></td>
   </tr>
 </table>
- 
+
 <strong>支払方法</strong>
-<% if @pay == 'credit_card' %>
-  <%= 'クレジットカード' %>
-<% else %>
-  <%= '銀行振込' %>
-<% end %><br>
+<%= @order.payment_method_i18n %><br>
+<%# if @pay == 'credit_card' %>
+  <%#= 'クレジットカード' %>
+<%# else %>
+  <%#= '銀行振込' %>
+<%# end %>
 
 <strong>お届け先</strong>
-<% if @select_address == '0' %>
-  〒<%= @customer.postal_code %><%= @customer.address %><br>
-  <%= @customer.last_name %><%= @customer.first_name %>
-<% elsif @select_address == '1'%>
-  <%= @address.set_address %>
-<% else %>
-  〒<%= @order.postal_code %><%= @order.address %><br>
+〒<%= @order.postal_code %><%= @order.address %><br>
   <%= @order.name %>
-<% end %><br>
+<%# if @select_address == '0' %>
+  <%#= @customer.postal_code %><%#= @customer.address %>
+  <%#= @customer.last_name %><%#= @customer.first_name %>
+<%# elsif @select_address == '1'%>
+  <%#= @address.postal_code %><%#= @address.address %>
+  <%#= @address.name %>
+<%# else %>
+  <%#= @order.postal_code %><%#= @order.address %>
+  <%#= @order.name %>
+<%# end %>
 
 
-<%= link_to '注文を確定する', orders_path, method: :post, class:"btn btn-success btn-lg" %>
+<%#= link_to '注文を確定する', orders_path, method: :post, class:"btn btn-success btn-lg" %>
+
+
+<%= form_with model: @order_new, url: orders_path do |f| %>
+  <%= f.hidden_field :customer_id, value: current_customer.id %>
+  <%= f.hidden_field :payment_method, value: @order.payment_method %>
+  <%= f.hidden_field :shipping_cost, value: 800 %>
+  <%= f.hidden_field :postal_code, value: @order.postal_code %>
+  <%= f.hidden_field :total_payment, value: @total_price + 800 %>
+  <%= f.hidden_field :address, value: @order.address %>
+  <%= f.hidden_field :name, value: @order.name %>
+  <%= f.hidden_field :status, value: '入金待ち' %>
+  <%= f.submit '注文を確定する', class:"btn btn-success btn-lg" %>
+<% end %>
