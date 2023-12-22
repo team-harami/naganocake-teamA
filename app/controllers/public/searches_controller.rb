@@ -7,7 +7,6 @@ class Public::SearchesController < ApplicationController
     
     def search_name
         @word = params[:word]
-        @items = Item.where( "name LIKE?", "%#{@word}%")
-        # @items = Item.where(is_active: true)
+        @items = Item.where(is_active: true).where( "name LIKE?", "%#{@word}%")
     end
 end

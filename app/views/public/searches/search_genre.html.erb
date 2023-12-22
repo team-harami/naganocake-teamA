@@ -13,8 +13,8 @@
         <div class="row">
             <div class="card-deck py-5 text-center">
                 <% @items.each do |item| %>
-                    <div class = "card border-0">
-                        <div class="card-image-top w-50 mx-auto ">
+                    <div class = "card border-0" style="width: 30rem; background-color: #ffde59;">
+                        <div class="card-image-top w-80 mx-auto ">
                             <%= link_to item_path(item.id) do %>
                                 <%= image_tag item.get_item_image(150,150), class: "card-img-top"; %>
                             <% end %>
