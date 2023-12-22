@@ -5,13 +5,13 @@
             <%= render '/public/items/search_genre.html.erb' %>
         </div>
     </div>
-    <div class= "col-7 lm-1">
+    <div class= "col-7 lm-2">
         <div class ="row">
-            <h4>商品一覧</h4>
+            <h4><%= @genre.name %>一覧</h4>
             （全<%=@items.count%>件）　
         </div>
         <div class="row">
-            <div class="card-deck py-5 text-center ">
+            <div class="card-deck py-5 text-center">
                 <% @items.each do |item| %>
                     <div class = "card border-0" style="width: 30rem; background-color: #ffde59;">
                         <div class="card-image-top w-80 mx-auto ">
@@ -21,10 +21,11 @@
                         </div>
                         <div class="card-body">
                                 <div class ="card-title">
-                                    <%= link_to item.name, item_path(item.id), :style => "color: black;"%>
+                                    <%= item.name %>
                                 </div>
                                 <div class ="card-text">
-                                    <%= item.with_tax_price.floor.to_s(:delimited) %>円
+                                    <% tax_price=item.price*1.1 %> 
+                                    <%= tax_price.floor.to_s(:delimited)  %>円
                                 </div>
                         </div>
                     </div>
