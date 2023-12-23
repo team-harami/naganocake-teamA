@@ -1,4 +1,8 @@
-<h3>注文履歴一覧</h3>
+<div>
+  <h3 class="text-dark bg-secondary">注文履歴一覧</h3>
+</div>
+
+
 
 <table border="3">
   <thead>
@@ -15,7 +19,6 @@
     <% @orders.each do |order| %>
     <tr>
       <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-                <!--created_atどっち？-->
       <td><%= order.address %></td>
       <td>
         <% order.order_details.each do |order_detail| %>
