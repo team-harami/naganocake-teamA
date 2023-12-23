@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   get 'about' => 'public/homes#about'
   get 'public/genres/:id/search/' => 'public/searches#search_genre'
-  get 'public/seachr' =>'public/searches#search_name', as: 'search_items'
+  get 'public/search' =>'public/searches#search_items', as: 'search_items'
+  get 'admin/search' => 'admin/searches#search_customers', as: 'search_customers'
+
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -16,17 +18,15 @@ Rails.application.routes.draw do
 
   scope module: :public do
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_cart'
-    resources :items, only: [:index, :show] do
-      
-    end
+    resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :addresses, only: [:create, :index, :edit, :update, :destroy]
     resources :orders do #only: [:new, :thanks, :create, :index, :show]
       collection do
         post 'confirm'
         get 'thanks'
+      end
     end
-  end
     resources :customers do
       collection do
         get :my_page, to: "customers#show"
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
         patch :withdraw
       end
     end
-  end
+  end 
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
