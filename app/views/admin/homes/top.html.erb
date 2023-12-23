@@ -1,0 +1,27 @@
+
+<h5>注文履歴一覧</h5>
+
+
+<table>
+  <thead>
+<tr>
+  <th>購入日時</th>
+  <th>購入者</th>
+  <th>注文個数</th>
+  <th>ステータス</th>
+</tr>
+</thead>
+
+
+
+    <% @orders.each do |order| %>
+    <tbody>
+<tr>
+   <td><%= order.created_at.in_time_zone("Tokyo").strftime("%Y/%m/%d %H:%M") %></td>
+   <td><%= order.customer.last_name + order.customer.first_name %></td>
+   <td><%= order.order_details.sum(:amount) %></td>
+   <td><%= order.status%></td>
+  </tr>
+</tbody>
+<% end %>
+  </table>
