@@ -6,23 +6,10 @@
   position: relative;
   background: url(../../assets/images/cake.jpg);
   background-size: cover;
-  // background-position: center;
-  text-align: center;
+  background-position: center;
 }
 
-// .background text-center {
-//   width: 700px;
-//   height: 467px;
-//   background: url(../../assets/images/cake.jpg);
-//   background-size: cover;
-//   // position: absolute;
-//   // top: 50%;
-//   // left: 50%;
-//   // transform: translate(-50%, -50%);
-//   display: flex;
-//   justify-content: center;
-//   // align-items: center;
-// }
+
 
 .box {
   width: 380px;
@@ -35,13 +22,7 @@
 }
 
 .box-text {
-  // width: 190px;
-  // height: 90px;
   position: absolute;
-  // top: 50%;
-  // left: 50%;
-  // text-align: center;
-  // padding-top: 25px;
   transform: translate(3%, 0%);
   font-weight: normal;
   font-size: 16px;
@@ -53,9 +34,9 @@
   padding: 0px;
 }
 
-body{
-  background-color:#ffde59;
-}
+// body{
+//   background-color:#ffde59;
+// }
 
 
 // .image-container {

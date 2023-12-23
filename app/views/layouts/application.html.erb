@@ -33,7 +33,7 @@
                 <!--  <#% end %>-->
                 <!--</div>-->
               </div>
-            
+
             <% elsif customer_signed_in? %>
               <div class="col-2 ">ようこそ</br><%= current_customer.last_name %>さん！</div>
               <div class="col-6 justify-content-end">
@@ -47,7 +47,7 @@
                   <% end %>
                 </div>
               </div>
-      
+
             <% else %>
               <div class="col-6 justify-content-end d-grid d-md-block">
                   <button class ="btn btn-sm"><%= link_to 'About', about_path , class:'btn'%></button>
@@ -62,12 +62,12 @@
             </div>
             <% end %>
 
-              
+
 
               </div>
         </div>
-           
-          
+
+
       </div>
     </header>
     <%= yield %>
