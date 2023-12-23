@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'about' => 'public/homes#about'
   get 'public/genres/:id/search/' => 'public/searches#search_genre'
   get 'public/search' =>'public/searches#search_items', as: 'search_items'
-  get 'admin/search' => 'admin/searches#search_customers', as: 'search_customers'
+  # get 'admin/search' => 'admin/searches#search_customers', as: 'search_customers'
 
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
