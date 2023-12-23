@@ -6,8 +6,23 @@
   position: relative;
   background: url(../../assets/images/cake.jpg);
   background-size: cover;
-  background-position: center;
+  // background-position: center;
+  text-align: center;
 }
+
+// .background text-center {
+//   width: 700px;
+//   height: 467px;
+//   background: url(../../assets/images/cake.jpg);
+//   background-size: cover;
+//   // position: absolute;
+//   // top: 50%;
+//   // left: 50%;
+//   // transform: translate(-50%, -50%);
+//   display: flex;
+//   justify-content: center;
+//   // align-items: center;
+// }
 
 .box {
   width: 380px;
@@ -41,3 +56,30 @@
 body{
   background-color:#ffde59;
 }
+
+
+// .image-container {
+//   position: relative;
+// }
+
+// .image-container:after {
+//   content: "";
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   width: 380px;
+//   height: 200px;
+//   background-color: rgba(255,255,255,0.5);
+//   z-index: 1;
+// }
+
+// .image-text {
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(3%, 0%);
+//   color: #000;
+//   font-weight: normal;
+//   font-size: 16px;
+//   z-index: 2;
+// }
