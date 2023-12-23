@@ -1,35 +1,41 @@
 <div class="container">
   <div class="row">
-     <div class="col-md mx-auto">
-<h5>ログイン</h5>
-<h6>会員の方はこちらからログイン</h6>
+<h5 class="mt-3">ログイン</h5>
+</div>
+
+<div class="row">
+<h6 class="ml-3 mt-4">会員の方はこちらからログイン</h6>
+</div>
 <%= form_with model: resource, url: session_path(resource_name), local: true do |f| %>
 
   <table>
     <tbody>
       <tr>
-    <td><%= f.label :メールアドレス %></td>
-    <td class="pl-2"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+    <td class="pl-5 pt-3"><%= f.label :メールアドレス %></td>
+    <td class="pl-5"><%= f.email_field :email, size: 40, autofocus: true, autocomplete: "email" %></td>
   </tr>
 
   <tr>
-    <td><%= f.label :パスワード %></td>
-    <td class="pl-2"><%= f.password_field :password, autocomplete: "current-password" %></td>
+    <td class="pl-5 py-2"><%= f.label :パスワード %></td>
+    <td class="pl-5"><%= f.password_field :password, size: 40, autocomplete: "current-password" %></td>
  </tr>
 
   <tr>
     <td></td>
-    <td class="pl-2"><%= f.submit "ログイン", class: "btn btn-primary" %></td>
+    <td class="pl-5 pt-4"><%= f.submit "ログイン", class: "btn btn-primary col-5" %></td>
   </tr>
   </tbody>
   </table>
 <% end %>
 
+<div class="row mt-4">
 <h6>会員登録がお済みでない方</h6>
-<p class="d-flex align-items-end">
+</div>
+
+<div class="row d-flex align-items-end my-3">
+  <div class="col-1"></div>
 <span class="mr-2"><%= render "public/shared/links" %></span>から新規登録を行なってください。
-</p>
 </div>
-</div>
+
 </div>
 
