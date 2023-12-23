@@ -1,11 +1,41 @@
-<h3>配送先編集</h3>
+<div class="form-row my-4">
+<div class="form-group col-1"></div>
+<h4 class="form-group col-3">配送先編集</h4>
+</div>
 
 <%= form_with model: @address, method: :patch do |f| %>
-  <%= f.label :postal_code, '郵便番号(ハイフンなし)' %>
-  <%= f.text_field :postal_code %><br>
-  <%= f.label :address, '住所' %>
-  <%= f.text_field :address, size: 60 %><br>
-  <%= f.label :name, '宛名' %>
+<div class="form-row">
+  <div class="form-group col-2">
+  <span class="pl-5"><%= f.label :postal_code, '郵便番号(ハイフンなし)' %></span>
+  </div>
+  <div class="form-group col-10">
+  <%= f.text_field :postal_code %>
+  </div>
+   </div>
+
+   <div class="form-row">
+    <div class="form-group col-2">
+  <span class="pl-5"><%= f.label :address, '住所' %></span>
+  </div>
+  <div class="form-group col-10">
+  <%= f.text_field :address, size: 60 %>
+  </div>
+  </div>
+
+
+<div class="form-row">
+    <div class="form-group col-2">
+  <span class="pl-5"><%= f.label :name, '宛名' %></span>
+  </div>
+  <div class="form-group col-10">
   <%= f.text_field :name %>
+  </div>
+   </div>
+
+   <div class="form-row">
+      <div class="form-group col-2"></div>
+      <div class="form-group col-10">
   <%= f.submit '変更内容を保存', class:"btn btn-success btn-sm" %>
+  </div>
+  </div>
 <% end %>

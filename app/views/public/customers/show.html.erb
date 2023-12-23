@@ -1,17 +1,20 @@
 
-  <div class="row">
-     <div class="col-md mx-auto">
+<div class="form-row my-4">
+<div class="col-1"></div>
 <h5>マイページ</h5>
+</div>
 
-<div class="d-flex align-items-end my-3">
-<h6><strong>登録情報</strong></h6>
-<div class="ml-4">
-<%= link_to information_edit_customers_path, class: "btn btn-success" do %>
+<div class="form-row ml-5">
+<h5 class="col-1 d-flex align-items-end"><strong>登録情報</strong></h5>
+<div class="col-2">
+<%= link_to information_edit_customers_path, class: "btn btn-success col-6" do %>
  編集する
 <% end %>
 </div>
 </div>
 
+<div class="form-row  ml-5 mt-3">
+  <div class="col-8">
 <table class="table table-bordered">
   <tbody class="thead-light">
     <tr>
@@ -40,36 +43,27 @@
     </tr>
   </tbody>
 </table>
+</div>
+</div>
 
-<table>
-  <tbody>
-    <tr>
-<td class="d-flex align-items-end mt-3">
-<h6><strong>配送先</strong></h6>
-</td>
-<td class="pl-4">
-<%= link_to root_path, class: "btn btn-primary" do %>
+<div class="form-row  ml-5 my-4">
+<h5 class="col-1 d-flex align-items-end"><strong>配送先</strong></h5>
+<div class="col-2">
+<%= link_to addresses_path, class: "btn btn-primary col-8" do %>
  一覧を見る
 <% end %>
-</td>
-</tr>
+</div>
+</div>
+
 <!--パスは仮-->
 
-</tr>
-<td class="d-flex align-items-end mt-3">
-<h6><strong>注文履歴</strong></h6>
-</td>
-
-<td class="pl-4">
-<%= link_to root_path, class: "btn btn-primary" do %>
+<div class="form-row  ml-5 my-4">
+<h5 class="col-1 d-flex align-items-end"><strong>注文履歴</strong></h5>
+<div class="col-2">
+<%= link_to orders_path, class: "btn btn-primary col-8" do %>
  一覧を見る
 <% end %>
-</td>
-</tr>
-</tbody>
-</table>
-<!--パスは仮-->
 </div>
 </div>
-</div>
+
 
