@@ -12,14 +12,14 @@
             </div>
         <% end %>
     
-<table class ="table col-4">
+<table class ="table table-striped col-3">
     <thead class= "mt-4 ">
-        <h7>ジャンル</h7>
+        <h7>ジャンル一覧</h7>
     </thead>
-    <tbody>
+    <tbody class="table-light text-center">
         <% @genres.each do |genre| %>
             <tr>
-                <td><%= genre.name %></td>
+                <td class ="align-middle"><%= genre.name %></td>
                 <td><%= link_to "編集", edit_admin_genre_path(genre.id) ,class: "btn btn-success" %></td>
             </tr>
         <% end %>

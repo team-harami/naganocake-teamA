@@ -17,26 +17,33 @@
 <table>
   <tbody>
     <tr>
+    <% @items.each do |item|%>
       <td>
-        <%= image_tag 'str.jpg', size: '200x150' %>
-        <p>商品名 苺のフレジェ</p>
-        <p>¥ 5,000</p>
+        <%#= image_tag 'str.jpg', size: '200x150' %>
+        <%= link_to item_path(item.id) do %>
+          <%= image_tag item.get_item_image(200,150)%>
+        <% end %>
+        <!--<p>商品名 苺のフレジェ</p>-->
+        <!--<p>¥ 5,000</p>-->
+        <p><%= item.name %></p>
+        <p><%= item.price %>円</p>
       </td>
-      <td>
-        <%= image_tag 'canure.jpg', size: '200x150' %>
-        <p>商品名 カヌレ</p>
-        <p>¥ 500</p>
-      </td>
-      <td>
-        <%= image_tag 'pudding.jpg', size: '200x150' %>
-        <p>商品名 いちごプリンホイップクリーム乗せ</p>
-        <p>¥ 600</p>
-      </td>
-      <td>
-        <%= image_tag 'candy.jpg', size: '200x150' %>
-        <p>商品名 フルーツキャンディ詰め合わせ</p>
-        <p>¥ 500</p>
-      </td>
+    <% end %>
+      <!--<td>-->
+      <!--  <%= image_tag 'canure.jpg', size: '200x150' %>-->
+      <!--  <p>商品名 カヌレ</p>-->
+      <!--  <p>¥ 500</p>-->
+      <!--</td>-->
+      <!--<td>-->
+      <!--  <%= image_tag 'pudding.jpg', size: '200x150' %>-->
+      <!--  <p>商品名 いちごプリンホイップクリーム乗せ</p>-->
+      <!--  <p>¥ 600</p>-->
+      <!--</td>-->
+      <!--<td>-->
+      <!--  <%= image_tag 'candy.jpg', size: '200x150' %>-->
+      <!--  <p>商品名 フルーツキャンディ詰め合わせ</p>-->
+      <!--  <p>¥ 500</p>-->
+      <!--</td>-->
     </tr>
   </tbody>
 </table>
