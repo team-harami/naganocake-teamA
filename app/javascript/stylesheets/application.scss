@@ -9,6 +9,8 @@
   background-position: center;
 }
 
+
+
 .box {
   width: 380px;
   height: 200px;
@@ -20,13 +22,7 @@
 }
 
 .box-text {
-  // width: 190px;
-  // height: 90px;
   position: absolute;
-  // top: 50%;
-  // left: 50%;
-  // text-align: center;
-  // padding-top: 25px;
   transform: translate(3%, 0%);
   font-weight: normal;
   font-size: 16px;
@@ -38,3 +34,33 @@
   padding: 0px;
 }
 
+// body{
+//   background-color:#ffde59;
+// }
+
+
+// .image-container {
+//   position: relative;
+// }
+
+// .image-container:after {
+//   content: "";
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   width: 380px;
+//   height: 200px;
+//   background-color: rgba(255,255,255,0.5);
+//   z-index: 1;
+// }
+
+// .image-text {
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(3%, 0%);
+//   color: #000;
+//   font-weight: normal;
+//   font-size: 16px;
+//   z-index: 2;
+// }

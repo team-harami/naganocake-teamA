@@ -1,50 +1,52 @@
-<!--Top-page-->
-<div class="background">
-  <div class="box">
-    <div class="box-text">
-      <p class="height">ようこそ、ながのCAKEへ！</p><br>
-      <p class="height">このサイトは、ケーキ販売のECサイトになります。</p><br>
-      <p class="height">会員でない方も商品の閲覧はできますが、</p><br>
-      <p class="height">購入には会員登録が必要になります。</p>
+<div class="form-row d-flex justify-content-center">
+  <div class="background">
+    <div class="box">
+      <div class="box-text">
+        <p class="height">ようこそ、ながのCAKEへ！</p><br>
+        <p class="height">このサイトは、ケーキ販売のECサイトになります。</p><br>
+        <p class="height">会員でない方も商品の閲覧はできますが、</p><br>
+        <p class="height">購入には会員登録が必要になります。</p>
+      </div>
     </div>
   </div>
 </div>
 
 
+<div class="container p-3">
+  <div class="row">
+    <div class="col-6">
+      <h3>新着商品</h3>
+    </div>
+  </div>
 
-<h1>新着商品</h1>
+      
+  
+    
+      
+    
 
-<table>
-  <tbody>
-    <tr>
-    <% @items.each do |item|%>
-      <td>
-        <%#= image_tag 'str.jpg', size: '200x150' %>
-        <%= link_to item_path(item.id) do %>
-          <%= image_tag item.get_item_image(200,150)%>
-        <% end %>
-        <!--<p>商品名 苺のフレジェ</p>-->
-        <!--<p>¥ 5,000</p>-->
-        <p><%= item.name %></p>
-        <p><%= item.price %>円</p>
-      </td>
-    <% end %>
-      <!--<td>-->
-      <!--  <%#= image_tag 'canure.jpg', size: '200x150' %>-->
-      <!--  <p>商品名 カヌレ</p>-->
-      <!--  <p>¥ 500</p>-->
-      <!--</td>-->
-      <!--<td>-->
-      <!--  <%#= image_tag 'pudding.jpg', size: '200x150' %>-->
-      <!--  <p>商品名 いちごプリンホイップクリーム乗せ</p>-->
-      <!--  <p>¥ 600</p>-->
-      <!--</td>-->
-      <!--<td>-->
-      <!--  <%#= image_tag 'candy.jpg', size: '200x150' %>-->
-      <!--  <p>商品名 フルーツキャンディ詰め合わせ</p>-->
-      <!--  <p>¥ 500</p>-->
-      <!--</td>-->
-    </tr>
-  </tbody>
-</table>
-<%= link_to '全ての商品を見る>', items_path %>
+  
+               
+      <table style="height: 200px;">
+        <tbody>
+  <div class="row justify-content-center">
+    <div class="col-3">
+          <tr>
+          <% @items.each do |item|%>
+            <td>
+      
+              <%= link_to item_path(item.id) do %>
+                <%= image_tag item.get_item_image(200,150)%>
+              <% end %>
+              <p><%= item.name %></p>
+              <p><%= item.price %>円</p>
+            </td>
+          <% end %>
+          </tr>
+        </tbody>
+      </table>
+      <%= link_to '全ての商品を見る>', items_path %>
+    </div>
+  </div>
+</div>
+

@@ -2,7 +2,8 @@ class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
   def index
     # @orders = Order.page(params[:page])
-    @orders = Order.order("id DESC")
+    # @orders = Order.order("id DESC")
+    @orders = Order.order(created_at: :desc)
     @order_amount = 0
   end
 
@@ -19,9 +20,13 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    # status = order.status
-    @order.update(order_params)
-    redirect_to request.referer 
+    @order_details = @order.order_details
+    if @order.update(order_params)
+       @order_details.update_all(making_status: "製作待ち") if @order.status == "入金確認"
+    end
+                # status = order.status
+    # @order.update(order_params)
+    redirect_to request.referer
     # 多分非同期
   end
 
@@ -30,5 +35,5 @@ class Admin::OrdersController < ApplicationController
   def order_params
         params.require(:order).permit(:customer_id, :postal_code, :address, :name, :shipping_cost, :total_payment, :payment_method, :status)
   end
-  
+
 end
