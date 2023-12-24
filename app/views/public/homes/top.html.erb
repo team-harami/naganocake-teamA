@@ -13,11 +13,15 @@
 
 
 <div class="container p-3">
-  <div class="row d-flex justify-content-center">
-    <div class="col-6">
+  <div class="row" style="width: 500px;">
+    <div class="col-3">
+      <div></div>
+    </div>
+    <div class="col-9">
       <h3>新着商品</h3>
     </div>
   </div>
+    <div class="table-layout">
       <table style="height: 200px;">
         <tbody>
   <div class="row">
@@ -32,7 +36,7 @@
             <div class="text-wrap" style="width: auto;">
               <p><%= item.name %></p>
             </div>
-              <p class="align-bottom"><%= item.price %>円</p>
+              <p><%= item.price %>円</p>
             </td>
           <% end %>
           </tr>
@@ -42,6 +46,7 @@
         <%= link_to '全ての商品を見る>', items_path %>
       </div>
       </div>
+    </div>
     </div>
   </div>
 </div>
