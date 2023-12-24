@@ -1,4 +1,4 @@
-<div class="container d-flex-column space-around text-center">
+<div class="container d-flex-column space-around">
     <div class="row my-4" >
         
            <h4 class="col-md-4">ショッピングカート</h4>
@@ -11,8 +11,8 @@
     <% else %>
         <div>
             <table class = "table">
-                <thead  class="table-secondary">
-                    <tr>
+                <thead>
+                    <tr class="table-primary">
                         <th>商品名</th>
                         <th>単価(税込)</th>
                         <th>数量</th>
@@ -20,10 +20,10 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody >
+                <tbody>
                     <% @cart_items.each do |cart_item| %>
-                        <tr>
-                            <td class = "align-middle">
+                        <tr class ="table-light">
+                            <td class = "align-middle justify-content-start">
                                 <%=image_tag cart_item.item.get_item_image(100,100) %>
                                 <%= cart_item.item.name %>
                             </td>
@@ -37,7 +37,7 @@
                                  <% end %>
                             </td>
                             <td class="align-middle">
-                                <%= cart_item.subtotal.to_s(:delimited)%>
+                                <%= cart_item.subtotal.to_s(:delimited)%>円
                             </td>
                             <td class = "align-middle"><%= button_to "削除", cart_item_path(cart_item), method: :delete, class: "btn btn-danger", data: { confirm: "本当に空にしますか？" }  %></td>
                             <% @total_price += cart_item.subtotal %>
@@ -50,12 +50,12 @@
     
     <div class="row align-items-end">
         <div class="col-3">    
-            <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
+            <%= link_to "買い物を続ける", items_path, class: "btn btn-primary" %>
         </div>
         <div class="col-3 offset-md-6">
             <ul class="list-group list-group-horizontal">
               <li class="list-group-item list-group-item-info">合計金額</li>
-              <li class="list-group-item"><%= @total_price.to_s(:delimited )%></li>
+              <li class="list-group-item"><%= @total_price.to_s(:delimited )%>円</li>
             </ul>
         </div>
     </div>

@@ -5,6 +5,7 @@
   </h4>
 </div>
 
+
 <%= form_with model: @address, method: :post, url: addresses_path do |f| %>
  <div class="form-row">
   <div class="form-group col-2">
@@ -51,6 +52,8 @@
   <%#= a.submit '削除する', class:"btn btn-danger" %>
 <%# end %>
 
+<% if @addresses.exists? %>
+
 <table border="3" class="ml-5">
   <thead class="table-light">
     <tr>
@@ -74,3 +77,5 @@
   <% end %>
   </tbody>
 </table>
+
+<% end %>
