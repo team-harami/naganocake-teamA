@@ -15,36 +15,36 @@
         <tr>
           <td class="p-1">名前</td>
           <td class="p-1"><%= f.label :last_name, "(姓)" %></td>
-          <td class="p-1"><%= f.text_field :last_name, autofocus: true, placeholder:'令和' %></td>
+          <td class="p-1"><%= f.text_field :last_name, autofocus: true%></td>
           <td class="pl-4"><%= f.label :first_name, "(名)" %></td>
-          <td class="p-1"><%= f.text_field :first_name, placeholder:'道子' %></td>
+          <td class="p-1"><%= f.text_field :first_name %></td>
         </tr>
         <tr>
           <td class="p-1">フリガナ</td>
           <td class="p-1"><%= f.label :last_name_kana, "(セイ)" %></td>
-          <td class="p-1"><%= f.text_field :last_name_kana, placeholder:'レイワ' %></td>
+          <td class="p-1"><%= f.text_field :last_name_kana %></td>
           <td class="pl-4"><%= f.label :first_name_kana, "(メイ)" %></td>
-          <td class="p-1"><%= f.text_field :first_name_kana, placeholder:'ミチコ' %></td>
+          <td class="p-1"><%= f.text_field :first_name_kana %></td>
         </tr>
         <tr>
           <td class="p-1"><%= f.label :email, "メールアドレス" %></td>
           <td></td>
-          <td class="p-1"><%= f.email_field :email, autocomplete: "email", placeholder:'sample@example.com' %></td>
+          <td class="p-1"><%= f.email_field :email, autocomplete: "email" %></td>
         </tr>
         <tr>
-          <td class="p-1"><%= f.label :postal_cord, "郵便番号(ハイフンなし)" %></td>
+          <td class="p-1"><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></td>
           <td></td>
-          <td class="p-1"><%= f.text_field :postal_cord, placeholder:'00000000' %></td>
+          <td class="p-1"><%= f.text_field :postal_code %></td>
         </tr>
         <tr>
           <td class="p-1"><%= f.label :address, "住所" %></td>
           <td></td>
-          <td class="p-1" colspan="3"><%= f.text_field :address, placeholder:'東京都渋谷区代々木神園町0-0', size: "55" %></td>
+          <td class="p-1" colspan="3"><%= f.text_field :address, size: "55" %></td>
         </tr>
         <tr>
           <td class="p-1"><%= f.label :telephone_number, "電話番号(ハイフンなし)" %></td>
           <td></td>
-          <td class="p-1"><%= f.text_field :telephone_number, placeholder:'00000000000' %></td>
+          <td class="p-1"><%= f.text_field :telephone_number %></td>
         </tr>
         <tr>
           <td class="p-1">
