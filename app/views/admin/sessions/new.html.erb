@@ -8,7 +8,7 @@
     <%= f.label :メールアドレス %>
     </div>
      <div class="col-5">
-    <%= f.email_field :email, class:"col-12", autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, size: 40, autofocus: true %>
      </div>
   </div>
 
@@ -18,14 +18,14 @@
     </div>
 
     <div class="col-5">
-    <%= f.password_field :password, class:"col-12", autocomplete: "current-password" %>
+    <%= f.password_field :password, size: 40 %>
     </div>
   </div>
 
   <div class="row mt-4">
     <div class="col-2"></div>
     <div class="col-5">
-    <%= f.submit "ログイン", class:"btn btn-primary" %>
+    <%= f.submit "ログイン", class:"btn btn-primary col-3" %>
     </div>
   </div>
 <% end %>
